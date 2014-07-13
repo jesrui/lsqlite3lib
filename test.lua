@@ -1,3 +1,5 @@
+local sqlite3 = require "sqlite3"
+
 c = sqlite3.open('test.sqlite')
 
 c:exec[[
@@ -35,7 +37,7 @@ function f_step(s, r)
 		r[1] = r[1] + v
 	end
 end
-	
+
 function f_final(r)
 	return r[1]
 end
