@@ -100,10 +100,13 @@ static const luaL_Reg sqlite3lib[] = {
 };
 
 LUA_FUNC(connlib_close) {
+    return 0;
+
 	int ret;
 	conn* c = (conn*)luaL_checkudata(L, 1, MT_CONN);
 
 	lua_rawgeti(L, LUA_REGISTRYINDEX, c->ref);
+        // XXX Segfault here:
 	lua_rawgeti(L, -1, IDX_STMT_TABLE);
 
 	lua_pushnil(L);
